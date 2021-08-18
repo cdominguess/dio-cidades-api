@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class CidadesApiController {
+public class PaisesApiController {
 
-    @GetMapping("/cidades")
+    @GetMapping("/paises")
     public ResponseEntity index() {
-        return new ResponseEntity("API CIDADES funcionando", HttpStatus.OK);
+        return new ResponseEntity("API PAISES funcionando", HttpStatus.OK);
     }
 }
