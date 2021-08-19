@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "pais")
-@Entity(name = "Pais")
+@Entity
 public class Pais {
     @Id
     private Long id;
@@ -21,8 +19,8 @@ public class Pais {
     @Column
     private String nome;
 
-    @Column
-    private String nome_pt;
+    @Column(name = "nome_pt")
+    private String nomePtBR;
 
     @Column
     private String sigla;
