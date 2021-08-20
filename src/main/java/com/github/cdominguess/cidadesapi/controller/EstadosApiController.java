@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/estados")
 public class EstadosApiController {
     private EstadoService estadoService;
 
-    @GetMapping("/estados")
+    @GetMapping("/")
     public Page<Estado> listar(Pageable pagina) {
         return estadoService.listar(pagina);
     }
 
-    @GetMapping("/estados/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity buscarPorId(@PathVariable Long id) {
         return estadoService.buscarPorId(id);
     }

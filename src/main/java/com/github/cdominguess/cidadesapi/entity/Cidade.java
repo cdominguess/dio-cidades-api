@@ -1,11 +1,14 @@
 package com.github.cdominguess.cidadesapi.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Table(name = "cidade")
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Cidade {
     @Id
@@ -14,8 +17,19 @@ public class Cidade {
     @Column
     private String nome;
 
-    @Column(name = "uf")
-    private Integer idUf;
+    @ManyToOne
+    @JoinColumn(name = "uf", referencedColumnName = "id")
+    private Estado estado;
 
-    //private
+    @Column(name = "ibge")
+    private Integer codigoIbge;
+
+    @Column(name = "lat_lon")
+    private String latitudeLongitude;
+
+    @Column
+    private Double latitude;
+
+    @Column
+    private Double longitude;
 }
