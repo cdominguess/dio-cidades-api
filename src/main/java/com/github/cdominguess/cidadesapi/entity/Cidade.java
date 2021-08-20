@@ -3,6 +3,10 @@ package com.github.cdominguess.cidadesapi.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+import org.springframework.data.geo.Point;
 
 import javax.persistence.*;
 
@@ -10,6 +14,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@TypeDefs(
+    value = { @TypeDef(name = "point", typeClass = PointType.class )}
+)
 public class Cidade {
     @Id
     private Long id;
@@ -25,7 +32,11 @@ public class Cidade {
     private Integer codigoIbge;
 
     @Column(name = "lat_lon")
-    private String latitudeLongitude;
+    private String geoLocation;
+
+    @Type(type = "point")
+    @Column(name = "lat_lon", updatable = false, insertable = false)
+    private Point location;
 
     @Column
     private Double latitude;
