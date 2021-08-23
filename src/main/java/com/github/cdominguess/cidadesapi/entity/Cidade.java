@@ -14,9 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@TypeDefs(
-    value = { @TypeDef(name = "point", typeClass = PointType.class )}
-)
+@TypeDefs(value = { @TypeDef(name = "point", typeClass = PointType.class )})
 public class Cidade {
     @Id
     private Long id;
